@@ -1,58 +1,62 @@
-
-*{
-    background-color: azure;
-    margin: 0;
-    padding: 0;
-}
-
-img
+#komunikat[hidden]
 {
+    display: none;
+}
+#komunikat,
+#tresc,
+#przycisk
+{
+    text-align: center;
     display: block;
     margin: auto;
 }
-.container
+#plansza
 {
+    position: relative;
+    border-collapse: collapse;
+    margin: auto;
+    margin-top: 100px;
+}
+#plansza:not([ruch])::before
+{
+    padding-top: 40%;
+    box-sizing: border-box;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    content: "Gra zawieszkona";
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
     width: 100%;
     height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
 }
-.row
+th
 {
-    column-count: 3;
+    border: 1px solid black;
+    font-size: 30px;
+    width: 80px;
+    height: 80px;
 }
-.text1
+th:not([pole]):hover
 {
-    width: 33%;
-    margin-left: auto;
-    margin-right: auto;
+    background-color: #0f0;
+    cursor: pointer;
 }
-
-.navi{
-    position: sticky;
-    top:0;
+th[pole]:hover
+{
+    background-color: #f00;
+    cursor: not-allowed;
 }
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color:   grey;
+#plansza[ruch=x] th:not([pole]):hover::before,
+th[pole=x]::before
+{
+    content: "X";
 }
-
-li {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-li a {
-    display: block;
-    color:  rgb(9, 187, 9);
-    font-size: 16px;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover {
-    background-color:rgb(207, 207, 7);
+#plansza[ruch=o] th:not([pole]):hover::before,
+th[pole=o]::before
+{
+    content: "o";
 }
